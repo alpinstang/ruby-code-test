@@ -22,7 +22,15 @@ module RubyCodeTest
         end
       end
 
-      @array = @hash.tsort
+      begin
+        @array = @hash.tsort
+      rescue Exception => e
+        if e.class == TSort::Cyclic
+          raise CircularDependencyError.new
+        else
+          raise StandardError.new
+        end
+      end
 
       @sequence = (@array.reject { |c| c.empty? }).join
     end

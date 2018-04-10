@@ -40,4 +40,14 @@ RSpec.describe RubyCodeTest::JobProcessor do
     expect{@job_processor.start jobs}.to raise_error(SelfDependencyError)
   end
 
+  it 'has six jobs with circular dependency error' do
+    jobs = File.read(Dir.pwd + "/spec/test_files/six_jobs_circular_dependency_error.txt")
+    expect{@job_processor.start jobs}.to raise_error(CircularDependencyError)
+  end
+
+  it 'has a malformed job' do
+    jobs = File.read(Dir.pwd + "/spec/test_files/malformed_job.txt")
+    expect{@job_processor.start jobs}.to raise_error(StandardError)
+  end
+
 end
