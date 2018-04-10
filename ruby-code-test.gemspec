@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "ruby/code/test/version"
+require "ruby_code_test/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "ruby-code-test"
-  spec.version       = Ruby::Code::Test::VERSION
+  spec.version       = RubyCodeTest::VERSION
   spec.authors       = ["John McDonald"]
   spec.email         = ["john.mcdonald@hatboysoftware.com"]
 
@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "fuubar", "~> 2.3.1"
 end
